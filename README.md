@@ -48,6 +48,8 @@ No artigo *"State management patterns and their potential drawbacks"*, Manuel Pl
 
 Esses problemas mostram que a forma como o estado é estruturado afeta diretamente a qualidade e a manutenção do código. Cada gerenciador de estado organiza a aplicação de maneira diferente e pode, dependendo do uso, facilitar ou evitar antipadrões. Porém, ainda não há consenso sobre qual abordagem gera mais antipadrões a longo prazo, pois isso depende do contexto e de como cada ferramenta é aplicada no projeto.
 
+Com isso, concluímos que o **problema** está na falta de clareza sobre como diferentes gerenciadores de estado em Flutter influenciam o surgimento de antipadrões em projetos reais, o que abre uma **oportunidade de estudo em analisar, comparar e compreender como abordagens como Bloc e MobX podem reduzir, intensificar ou transformar esses antipadrões ao longo do desenvolvimento.**
+
 ### 2.2 Contexto Organizacional e Técnico
 
 O estudo será realizado no contexto de aplicações Flutter, utilizando projetos open-source e análises automatizadas de código. O foco está em boas práticas de arquitetura, qualidade de código, métricas estáticas e análise de antipadrões.
