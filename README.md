@@ -95,14 +95,21 @@ Avaliar como diferentes gerenciadores de estado em Flutter influenciam a ocorrê
 
 ### 3.4 Métricas Associadas (GQM)
 
-| RQ | Questão de Pesquisa | Métricas Associadas |
-|----|----------------------|---------------------|
-| RQ1 | Quais são os antipadrões mais recorrentes em projetos Flutter relacionados ao gerenciamento de estado? | • Frequência de ocorrência de cada antipadrão por projeto |
-| RQ2 | Como os gerenciadores Bloc e MobX estruturam o fluxo de estado e quais diferenças essa estrutura gera na manutenção do código? | • Número de camadas/arquivos envolvidos no fluxo de estado • Grau de acoplamento (métricas como CBO ou dependências diretas) |
-| RQ3 | Em que situações os antipadrões surgem com mais frequência ao utilizar Bloc? | • Quantidade de antipadrões detectados por módulo ao usar Bloc |
-| RQ4 | Em que situações os antipadrões surgem com mais frequência ao utilizar MobX? | • Quantidade de antipadrões detectados por módulo ao usar MobX |
-| RQ5 | Como Bloc e MobX se comparam quanto à quantidade, tipo e impacto dos antipadrões identificados em projetos reais? | • Comparativo percentual de antipadrões (Bloc vs. MobX) • Severidade/impacto (classificação baixa/média/alta) |
-| RQ6 | Quais práticas podem reduzir o surgimento de antipadrões ao utilizar Bloc ou MobX em aplicações Flutter? | • Redução percentual de antipadrões após adoção de boas práticas identificadas |
+| RQ   | Questão de Pesquisa                                                                                                                                  | Métricas Associadas                                                                            |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| RQ1  | Quais são os antipadrões mais recorrentes em projetos Flutter relacionados ao gerenciamento de estado?                                               | • Frequência de ocorrência de cada antipadrão por projeto                                      |
+| RQ2  | Como os gerenciadores Bloc e MobX estruturam o fluxo de estado e quais diferenças essa estrutura gera na manutenção do código?                       | • Nº de camadas/arquivos no fluxo de estado • Grau de acoplamento (CBO / dependências diretas) |
+| RQ3  | Em que situações os antipadrões surgem com mais frequência ao utilizar Bloc?                                                                         | • Nº de antipadrões detectados por módulo com Bloc                                             |
+| RQ4  | Em que situações os antipadrões surgem com mais frequência ao utilizar MobX?                                                                         | • Nº de antipadrões detectados por módulo com MobX                                             |
+| RQ5  | Como Bloc e MobX se comparam quanto à quantidade, tipo e impacto dos antipadrões identificados em projetos reais?                                    | • Comparativo percentual Bloc vs. MobX • Classificação de severidade                           |
+| RQ6  | Quais práticas podem reduzir o surgimento de antipadrões ao utilizar Bloc ou MobX em aplicações Flutter?                                             | • Redução percentual de antipadrões após adoção de boas práticas                               |
+| RQ7  | Como as decisões de modularização influenciam o surgimento de antipadrões em aplicações Flutter que utilizam Bloc ou MobX?                           | • Nº de antipadrões por módulo • Relação entre tamanho do módulo e incidência                  |
+| RQ8  | Quais diferenças aparecem no tempo de compreensão e navegação do código entre projetos que usam Bloc e MobX, considerando a presença de antipadrões? | • Nº de passos para localizar estados/ações • Tempo médio de navegação entre arquivos          |
+| RQ9  | Como o nível de experiência dos desenvolvedores impacta a probabilidade de introduzir antipadrões ao usar Bloc ou MobX?                              | • Taxa de antipadrões por desenvolvedor/comit • Comparação entre níveis de experiência         |
+| RQ10 | Quais antipadrões estão associados a problemas de performance em aplicações Flutter utilizando Bloc ou MobX?                                         | • Quantidade de rebuilds desnecessários • Tempo de renderização e frame drops                  |
+| RQ11 | Quais características arquiteturais dos projetos estão mais correlacionadas com a formação de antipadrões nesses dois gerenciadores?                 | • Nº de dependências entre camadas • Complexidade ciclomática por módulo                       |
+| RQ12 | De que forma ferramentas automatizadas de análise estática diferem na detecção de antipadrões entre projetos com Bloc e MobX?                        | • Cobertura de regras detectadas por ferramenta • Diferença de falsos positivos/negativos      |
+
 
 ---
 
