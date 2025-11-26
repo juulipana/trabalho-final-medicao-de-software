@@ -93,9 +93,9 @@ Avaliar como diferentes gerenciadores de estado em Flutter influenciam a ocorrê
 5. Como Bloc e MobX se comparam quanto à quantidade, tipo e impacto dos antipadrões identificados em projetos reais?
 6. Quais práticas podem reduzir o surgimento de antipadrões ao utilizar Bloc ou MobX em aplicações Flutter?
 
-### 3.4 Métricas Associadas (GQM)
+### 3.4 Métricas (GQM)
 
-| RQ   | Questão de Pesquisa                                                                                                                                  | Métricas Associadas                                                                            |
+| RQ   | Questão de Pesquisa                                                                                                                                  | Métricas                                                                            |
 | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | RQ1  | Quais são os antipadrões mais recorrentes em projetos Flutter relacionados ao gerenciamento de estado?                                               | • Frequência de ocorrência de cada antipadrão por projeto                                      |
 | RQ2  | Como os gerenciadores Bloc e MobX estruturam o fluxo de estado e quais diferenças essa estrutura gera na manutenção do código?                       | • Nº de camadas/arquivos no fluxo de estado • Grau de acoplamento (CBO / dependências diretas) |
