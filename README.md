@@ -115,41 +115,97 @@ Avaliar como diferentes gerenciadores de estado em Flutter influenciam a ocorrê
 ## 4. Escopo e contexto do experimento
 
 ### 4.1 Escopo funcional / de processo (incluído e excluído)
-Explique claramente o que será coberto (atividades, artefatos, equipes, módulos) e o que ficará fora do experimento, para evitar interpretações divergentes.
+Este projeto abrange a análise comparativa de dois aplicativos Flutter com tamanho de código equivalente, sendo um baseado em Bloc e outro em MobX. Serão selecionados repositórios open-source amplamente reconhecidos (medidos pelo número de estrelas no GitHub) que utilizem esses gerenciadores de estado de forma predominante.
+
+O estudo não incluirá repositórios que utilizem outros gerenciadores de estado ou qualquer framework que não seja Flutter. Além disso, o contexto funcional das aplicações não será considerado: o foco está exclusivamente sobre características internas do código e seu tamanho, visando permitir uma comparação entre os projetos analisados.
 
 ### 4.2 Contexto do estudo (tipo de organização, projeto, experiência)
-Caracterize o contexto em que o estudo ocorrerá: tipo e tamanho de organização, tipo de projeto, criticidade e perfil de experiência dos participantes.
+O estudo será realizado usando de grandes projetos open-source desenvolvidos em Flutter, escolhidos por sua relevância e número de estrelas. A análise focará em dois repositórios comparáveis em tamanho de código, sendo um baseado em Bloc e outro em MobX.
+
+Não há organização ou equipe específica envolvida; os projetos analisados refletem contribuições de desenvolvedores da comunidade, com níveis variados de experiência. A criticidade do domínio das aplicações não será considerada, já que o foco está na estrutura interna do código e nas práticas de gerenciamento de estado.
 
 ### 4.3 Premissas
-Liste as suposições consideradas verdadeiras para o plano funcionar (por exemplo, disponibilidade de ambiente, estabilidade do sistema), mesmo que não possam ser garantidas.
+O estudo assume que os repositórios open-source selecionados permanecerão disponíveis durante a análise e que possuem tamanhos e complexidade comparáveis. Também se presume que as ferramentas de análise funcionarão de forma consistente ao longo de toda a pesquisa.
 
 ### 4.4 Restrições
-Registre limitações práticas como tempo, orçamento, ferramentas, acessos ou regras organizacionais que impõem limites ao desenho.
+
+* Tempo limitado para coleta e análise dos projetos.
+* Dependência de ferramentas de análise estática disponíveis publicamente.
+* Acesso restrito apenas a repositórios open-source.
+* Ausência de orçamento para aquisição de ferramentas pagas.
 
 ### 4.5 Limitações previstas
-Explique fatores que podem prejudicar a generalização dos resultados (validez externa), como contexto muito específico ou amostra pouco representativa.
+
+* Amostra pequena (apenas dois projetos).
+* Diferenças de contexto entre os repositórios podem influenciar os resultados.
+* Resultados podem não se aplicar a outros contextos, arquiteturas ou ferramentas.
 
 ## 5. Stakeholders e impacto esperado
 
 ### 5.1 Stakeholders principais
-Liste os grupos ou papéis que têm interesse ou serão impactados pelo experimento (por exemplo, devs, QA, produto, gestores, clientes internos).
+* Desenvolvedores mobile que utilizam Flutter e precisam escolher ou manter um gerenciador de estado.
+* Startups e pequenas empresas que precisam tomar decisões rápidas e embasadas sobre arquitetura, evitando riscos e retrabalho.
+* Engenheiros de software e arquitetos interessados em padrões, antipadrões e boas práticas de estruturação de estado.
+* Pesquisadores e estudantes que estudam qualidade de código, manutenibilidade e práticas de desenvolvimento em Flutter.
+* Comunidade open-source Flutter, que pode se beneficiar de evidências sobre uso e impactos dos principais gerenciadores de estado.
 
 ### 5.2 Interesses e expectativas dos stakeholders
-Descreva o que cada grupo espera obter do experimento (insights, evidências, validação de decisão, mitigação de risco, etc.).
+* **Desenvolvedores mobile:**
+  * Entender qual gerenciador de estado tende a gerar menos antipadrões.
+  * Obter dicas para melhorar qualidade e manutenção do código.
+
+* **Startups e pequenas empresas:**
+  * Diminuir riscos técnicos ao escolher um gerenciador de estado.
+  * Ajudar em decisões arquiteturais com base em evidências.
+
+* **Engenheiros de software e arquitetos:**
+  * Identificar impactos dos gerenciadores Bloc e MobX na arquitetura geral.
+  * Validar boas práticas e evidenciar problemas recorrentes de projeto.
+
+* **Pesquisadores e estudantes:**
+  * Obter dados para estudos sobre qualidade de software e engenharia Flutter.
+  * Aprofundar o entendimento sobre antipadrões em projetos reais.
+
+* **Líderes técnicos e gestores:**
+  * Tomar decisões de padrão arquitetural com evidências reais.
+  * Reduzir retrabalho e garantir qualidade de entrega das equipes.
+
+* **Comunidade open-source Flutter:**
+  * Análises que ajudem a evoluir práticas coletivas.
+  * Identificar pontos fracos comuns em projetos públicos.
 
 ### 5.3 Impactos potenciais no processo / produto
-Antecipe como a execução do experimento pode afetar prazos, qualidade, carga de trabalho ou o próprio produto durante e após o estudo.
 
+* Impacto positivo na qualidade futura de projetos Flutter, ao levantar antipadrões comuns.
+* Insights que podem influenciar escolhas arquiteturais em novos produtos.
+* Ajuda a ajustar prazos de projetos em andamento com base em dados.
+* Melhora na documentação e na tomada de decisão técnica a partir dos resultados obtidos em projetos reais.
+  
 ## 6. Riscos de alto nível, premissas e critérios de sucesso
 
 ### 6.1 Riscos de alto nível (negócio, técnicos, etc.)
-Identifique os principais riscos para negócio e tecnologia (atrasos, falhas de ambiente, indisponibilidade de dados, etc.) em nível macro.
 
+* Indisponibilidade dos repositórios open-source selecionados.
+* Atrasos na análise devido à complexidade maior do que o previsto.
+* Diferenças estruturais entre os projetos que prejudiquem comparações justas.
+* Risco de resultados pouco generalizáveis por conta da amostra reduzida.
+  
 ### 6.2 Critérios de sucesso globais (go / no-go)
-Defina as condições sob as quais o experimento será considerado útil e viável, inclusive critérios que sustentem uma decisão de seguir ou não com mudanças.
+
+**Go (seguir com o experimento / aplicar recomendações):**
+* Seleção de pelo menos um repositório representativo para cada gerenciador (Bloc e MobX) com tamanho e complexidade comparáveis.
+* Identificação e quantificação de antipadrões suficientes para permitir comparação (ocorrências relevantes em ambos os projetos).
+* Métricas principais (acoplamento, complexidade, modularização) calculadas de forma consistente e reproduzível.
+* Relatório com evidências claras que suportem recomendações práticas e mudanças arquiteturais.
+
+**No-Go (parar / não prosseguir com mudanças):**
+* Incapacidade de encontrar repositórios comparáveis ou remoção/indisponibilidade dos mesmos.
+* Falha persistente das ferramentas de análise ou impossibilidade técnica de extrair métricas confiáveis.
+* Número de ocorrências de antipadrões insuficiente para análise estatística significativa.
 
 ### 6.3 Critérios de parada antecipada (pré-execução)
-Descreva situações em que o experimento deve ser adiado ou cancelado antes de começar (falta de recursos críticos, reprovação ética, mudanças de contexto).
+* Impossibilidade de encontrar dois projetos open-source comparáveis em tamanho e complexidade.
+* Mudanças significativas nos repositórios.
 
 ---
 
