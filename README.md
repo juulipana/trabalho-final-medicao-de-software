@@ -110,6 +110,43 @@ Avaliar como diferentes gerenciadores de estado em Flutter influenciam a ocorrê
 | RQ11 | Quais características arquiteturais dos projetos estão mais correlacionadas com a formação de antipadrões nesses dois gerenciadores?                 | • Nº de dependências entre camadas • Complexidade ciclomática por módulo                       |
 | RQ12 | De que forma ferramentas automatizadas de análise estática diferem na detecção de antipadrões entre projetos com Bloc e MobX?                        | • Cobertura de regras detectadas por ferramenta • Diferença de falsos positivos/negativos      |
 
+---
+
+##4. Escopo e contexto do experimento
+###4.1 Escopo funcional / de processo (incluído e excluído)
+Explique claramente o que será coberto (atividades, artefatos, equipes, módulos) e o que ficará fora do experimento, para evitar interpretações divergentes.
+
+###4.2 Contexto do estudo (tipo de organização, projeto, experiência)
+Caracterize o contexto em que o estudo ocorrerá: tipo e tamanho de organização, tipo de projeto, criticidade e perfil de experiência dos participantes.
+
+###4.3 Premissas
+Liste as suposições consideradas verdadeiras para o plano funcionar (por exemplo, disponibilidade de ambiente, estabilidade do sistema), mesmo que não possam ser garantidas.
+
+###4.4 Restrições
+Registre limitações práticas como tempo, orçamento, ferramentas, acessos ou regras organizacionais que impõem limites ao desenho.
+
+###4.5 Limitações previstas
+Explique fatores que podem prejudicar a generalização dos resultados (validez externa), como contexto muito específico ou amostra pouco representativa.
+
+##5. Stakeholders e impacto esperado
+5.1 Stakeholders principais
+Liste os grupos ou papéis que têm interesse ou serão impactados pelo experimento (por exemplo, devs, QA, produto, gestores, clientes internos).
+
+###5.2 Interesses e expectativas dos stakeholders
+Descreva o que cada grupo espera obter do experimento (insights, evidências, validação de decisão, mitigação de risco, etc.).
+
+###5.3 Impactos potenciais no processo / produto
+Antecipe como a execução do experimento pode afetar prazos, qualidade, carga de trabalho ou o próprio produto durante e após o estudo.
+
+##6. Riscos de alto nível, premissas e critérios de sucesso
+###6.1 Riscos de alto nível (negócio, técnicos, etc.)
+Identifique os principais riscos para negócio e tecnologia (atrasos, falhas de ambiente, indisponibilidade de dados, etc.) em nível macro.
+
+###6.2 Critérios de sucesso globais (go / no-go)
+Defina as condições sob as quais o experimento será considerado útil e viável, inclusive critérios que sustentem uma decisão de seguir ou não com mudanças.
+
+###6.3 Critérios de parada antecipada (pré-execução)
+Descreva situações em que o experimento deve ser adiado ou cancelado antes de começar (falta de recursos críticos, reprovação ética, mudanças de contexto).
 
 ---
 
