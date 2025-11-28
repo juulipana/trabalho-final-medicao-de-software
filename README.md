@@ -12,12 +12,14 @@
 
 ### 1.3 Versão do Documento e Histórico de Revisão
 
-* **v1.0** — Documento inicial criado + GQM.
+* **v1.1** — Documento inicial criado + GQM.
+* **v1.2** — Escopo, Objetivo, Stakeholders/Impacto, Riscos de alto nível, premissas e critérios de sucesso.
+* **v1.3** - Modelo conceitual e hipóteses; Variáveis, fatores, tratamentos e objetos de estudo; Desenho experimental.
 
 ### 1.4 Datas
 
 * **Criação:** 21/11/2025
-* **Última atualização:** 21/11/2025
+* **Última atualização:** 28/11/2025
 
 ### 1.5 Autores
 
@@ -206,7 +208,269 @@ O estudo assume que os repositórios open-source selecionados permanecerão disp
 ### 6.3 Critérios de parada antecipada (pré-execução)
 * Impossibilidade de encontrar dois projetos open-source comparáveis em tamanho e complexidade.
 * Mudanças significativas nos repositórios.
+  
+---
 
+# **7. Modelo conceitual e hipóteses**
+
+## **7.1 Modelo conceitual do experimento**
+
+O experimento parte da premissa de que o gerenciador de estado utilizado (Bloc ou MobX) influencia diretamente:
+
+* **A incidência de antipadrões** em diferentes partes do código.
+* **A modularização e o acoplamento** entre componentes.
+* **A manutenibilidade percebida** (incluindo esforço para navegação e compreensão).
+* **A ocorrência de problemas de performance**, como rebuilds desnecessários.
+* **A previsibilidade do fluxo de estado** (impactando complexidade e clareza arquitetural).
+
+Modelo conceitual resumido:
+
+```
+Gerenciador de Estado (Bloc vs. MobX)
+            ↓ influencia
+Estrutura do Fluxo de Estado e Arquitetura Interna
+            ↓ influencia
+Métricas de Qualidade e Ocorrência de Antipadrões
+            ↓ influencia
+Manutenibilidade e Complexidade do Código
+            ↓ influencia
+Desempenho percebido e problemas correlatos
+```
+
+* **Bloc**, por ser mais prescritivo e baseado em eventos/estados explícitos, tende a **reduzir antipadrões relacionados à imprevisibilidade**, mas pode **aumentar complexidade estrutural e boilerplate**, gerando antipadrões como *inflated states* ou *eventos excessivos*.
+
+* **MobX**, por adotar reatividade implícita, tende a permitir **maior agilidade e concisão**, mas pode **aumentar acoplamento e dependências invisíveis**, gerando antipadrões como *reactions ocultas*, *rebuilds inesperados* e *global stores centrais*.
+
+---
+
+## **7.2 Hipóteses formais (H0 e H1)**
+
+As hipóteses abaixo foram formuladas para as **questões principais**, isto é, aquelas diretamente relacionadas à comparação Bloc vs. MobX.
+
+### **H1 – Ocorrência geral de antipadrões**
+
+* **H0₁:** Não há diferença significativa na quantidade de antipadrões entre projetos que utilizam Bloc e MobX.
+* **H1₁:** Projetos que utilizam MobX apresentam maior quantidade de antipadrões que projetos que utilizam Bloc.
+
+### **H2 – Acoplamento e modularização**
+
+* **H0₂:** Não há diferença significativa no acoplamento entre módulos em projetos com Bloc e MobX.
+* **H1₂:** Projetos com MobX apresentam maior acoplamento entre módulos do que projetos com Bloc.
+
+### **H3 – Complexidade do fluxo de estado**
+
+* **H0₃:** Bloc e MobX apresentam complexidade média de fluxo de estado equivalente.
+* **H1₃:** O Bloc apresenta maior complexidade estrutural (mais arquivos, mais camadas) do que o MobX.
+
+### **H4 – Rebuilds desnecessários**
+
+* **H0₄:** A frequência de rebuilds desnecessários é igual entre Bloc e MobX.
+* **H1₄:** O MobX apresenta maior quantidade de rebuilds desnecessários.
+
+### **H5 – Esforço cognitivo para navegação**
+
+* **H0₅:** A facilidade de navegação e compreensão do código é igual em ambos os gerenciadores.
+* **H1₅:** Projetos com MobX exigem maior esforço de navegação devido ao acoplamento implícito.
+
+### **H6 – Severidade dos antipadrões**
+
+* **H0₆:** A severidade dos antipadrões é equivalente entre Bloc e MobX.
+* **H1₆:** Antipadrões encontrados em projetos MobX têm maior severidade e impacto arquitetural.
+
+---
+
+## **7.3 Nível de significância e considerações de poder**
+
+* **Nível de significância adotado: α = 0,05.**
+* Considerações:
+
+  * A amostra é **muito pequena** (apenas dois grandes repositórios).
+  * O poder estatístico formal (>= 80%) **não poderá ser garantido** devido ao N reduzido.
+  * A análise será predominantemente **descritiva e exploratória**, com suporte de testes estatísticos apenas onde fizer sentido.
+  * A confiabilidade será reforçada por:
+
+    * triangulação de métricas diferentes,
+    * rastreabilidade clara dos antipadrões,
+    * análise manual complementar,
+    * replicabilidade dos cálculos.
+---
+
+# **8. Variáveis, fatores, tratamentos e objetos de estudo**
+
+## **8.1 Objetos de estudo**
+
+Os objetos analisados serão:
+
+* **Dois repositórios Flutter open-source**, de tamanho comparável:
+
+  * Um utilizando **Bloc** como gerenciador de estado predominante.
+  * Outro utilizando **MobX**.
+
+Dentro deles, serão analisados:
+
+* módulos de código (features, submódulos),
+* arquivos Dart,
+* stores, blocs, estados, eventos, observables,
+* widgets dependentes do estado,
+* métricas estáticas (CBO, complexidade, LCOM),
+* antipadrões previamente catalogados.
+
+---
+
+## **8.2 Sujeitos / participantes**
+
+Participantes opcionais para a parte de **esforço cognitivo**:
+
+* **Desenvolvedores ou estudantes com experiência mínima em Flutter**,
+  com nível básico/intermediário.
+
+Eles serão observados apenas em tarefas simples, como:
+
+* localizar onde o estado é modificado,
+* navegar entre arquivos,
+* identificar fluxo de eventos.
+
+A presença desses sujeitos não é obrigatória para o estudo quantitativo dos repositórios, mas reforça a validade externa.
+
+---
+
+## **8.3 Variáveis independentes (fatores) e níveis**
+
+| Fator                     | Descrição                    | Níveis                            |
+| ------------------------- | ---------------------------- | --------------------------------- |
+| **Gerenciador de estado** | Tecnologia analisada         | *Bloc*, *MobX*                    |
+| **Módulo analisado**      | Parte do sistema             | múltiplos módulos por repositório |
+| **Tipo de antipadrão**    | Categoria segundo literatura | ~10 categorias predefinidas       |
+
+Variável primária: **Gerenciador de estado**
+Variáveis secundárias: **módulo**, **tipo de antipadrão**.
+
+---
+
+## **8.4 Tratamentos (condições experimentais)**
+
+O experimento terá **duas condições principais**:
+
+### **T1 – Projeto com Bloc**
+
+* Código estruturado com eventos, estados e blocos.
+* Fluxo de estado explicitamente definido.
+
+### **T2 – Projeto com MobX**
+
+* Código estruturado com observables, actions e reações.
+* Fluxo de estado mais implícito e reativo.
+
+Não haverá grupo controle, pois é um projeto experimental comparativo.
+
+---
+
+## **8.5 Variáveis dependentes (respostas)**
+
+Principais variáveis medidas:
+
+* **Número total de antipadrões por módulo**
+* **Classificação de severidade dos antipadrões**
+* **CBO (acoplamento entre objetos)**
+* **Complexidade ciclomática média por módulo**
+* **Número de rebuilds desnecessários detectados**
+* **Tamanho dos módulos (LOC, nº de arquivos)**
+* **Tempo para localizar estados/ações (participantes)**
+* **Número de passos de navegação entre arquivos**
+
+---
+
+## **8.6 Variáveis de controle / bloqueio**
+
+* **Tamanho do projeto** (LOC e número de arquivos)
+* **Tipo de aplicação** (evitar comparar apps totalmente diferentes em propósito)
+* **Versão mínima do Flutter analisada**
+* **Ferramentas de análise estática usadas**
+* **Tipo de arquitetura base** (ex.: evitar comparar projetos com Clean Architecture complexa vs. projetos simples)
+* **Ambiente de execução** (mesma versão do SDK)
+
+---
+
+## **8.7 Possíveis variáveis de confusão conhecidas**
+
+* Diferença na experiência dos contribuidores originais dos repositórios.
+* Diferenças arquiteturais não relacionadas ao gerenciador de estado.
+* A existência de refatorações ou migrações parciais no histórico.
+* O projeto MobX ou Bloc pode ter mais funcionalidades, aumentando LOC.
+* Ferramentas de lint podem gerar falsos positivos.
+* Estrutura de pastas inconsistentes entre projetos.
+
+Mitigação: normalização por módulo, análise manual, filtragem de casos.
+
+---
+
+# **9. Desenho experimental**
+
+## **9.1 Tipo de desenho**
+
+O estudo usa um **desenho experimental comparativo**, com:
+
+* **Dois tratamentos fixos** (Bloc vs. MobX)
+* **Análise observacional** dos objetos (não manipulados)
+* **Estrutura em blocos** por módulo (quando adequado)
+
+É o mais apropriado dado que:
+
+* não é possível “randomizar” projetos open-source,
+* o foco é observar diferenças estruturais reais,
+* a amostra é limitada (2 repositórios completos).
+
+---
+
+## **9.2 Randomização e alocação**
+
+A randomização ocorrerá apenas se houver participantes humanos:
+
+* Ordem dos projetos será randomizada por participante:
+
+  * metade começa com o projeto Bloc,
+  * metade com o projeo MobX.
+* Randomização por ferramentas padrão (ex.: random.org ou função rand do Python).
+
+Para análise dos repositórios, **não há randomização**, pois são objetos fixos.
+
+---
+
+## **9.3 Balanceamento e contrabalanço**
+
+Para participantes humanos:
+
+* Aplicação de **contrabalanço do tipo AB/BA**, evitando vieses de ordem.
+* Cada participante executa as mesmas tarefas nos dois projetos.
+* Mesmo número de participantes em cada ordem.
+
+Para o código:
+
+* Módulos comparáveis serão pareados por tamanho e responsabilidade.
+
+---
+
+## **9.4 Número de grupos e sessões**
+
+* **2 grupos experimentais**, correspondentes aos dois tratamentos principais:
+
+  * Grupo Bloc
+  * Grupo MobX
+
+* **Sessões**:
+
+  * Análise do repositório Bloc → 1 sessão
+  * Análise do repositório MobX → 1 sessão
+
+Participantes humanos (se houver):
+
+* 1 sessão com ambos os tratamentos (cerca de 20–30 min cada).
+
+Justificativa:
+
+* Apenas dois gerenciadores de estado estão sendo comparados.
+* Sessões curtas evitam fadiga e mantêm a validade do esforço cognitivo.
+  
 ---
 
 ## Referências
