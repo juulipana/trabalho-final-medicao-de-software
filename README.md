@@ -473,6 +473,172 @@ Justificativa:
   
 ---
 
+# **10. População, sujeitos e amostragem**
+
+## **10.1 População-alvo**
+
+A população-alvo inclui:
+
+1. **Projetos Flutter open-source** que utilizam predominantemente:
+
+   * Bloc
+   * MobX
+
+2. **Módulos internos desses repositórios**, como:
+
+   * stores, blocs, estados, eventos,
+   * widgets consumidores de estado,
+   * camadas de aplicação (domain, presentation, data),
+   * componentes altamente afetados por fluxos de estado.
+
+---
+
+## **10.2 Critérios de inclusão de sujeitos (projetos / participantes)**
+
+Repositórios Flutter open-source disponíveis no GitHub ou plataformas similares, que utilizem predominantemente Bloc (para T1) ou MobX (para T2), possuam mais de 500 estrelas, apresentem uma estrutura modular clara e não misturem de forma significativa múltiplos gerenciadores de estado.
+
+---
+
+## **10.3 Critérios de exclusão**
+
+Projetos que misturam diversos gerenciadores de estado simultaneamente, repositórios muito pequenos (com menos de cinco módulos ou menos de 3.000 linhas de código) e repositórios com menos de 500 estrelas.
+
+---
+
+## **10.4 Tamanho da amostra planejado**
+
+A amostra consiste em dois projetos principais, sendo um utilizando Bloc e outro utilizando MobX, com a análise de 10 a 20 módulos no total (entre 5 e 10 por projeto). Trata-se de uma amostra analítica, não estatística, pois o objetivo é comparar em profundidade as características estruturais de dois sistemas equivalentes.
+
+---
+
+## **10.5 Método de seleção / recrutamento**
+
+**Projetos:**
+Seleção sistemática através de busca no GitHub utilizando filtros como:
+
+* linguagem: Dart,
+* framework: Flutter,
+* tecnologias: Bloc / MobX,
+* ordenação por número de estrelas, mínimo 500,
+* inspeção manual para confirmar dominância do gerenciador.
+
+---
+
+## **10.6 Treinamento e preparação dos sujeitos**
+
+Como se tratam de projetos, não será feito nenhum de treinamento ou preparação dos sujeitos. Os pré-requisitos serão satisfeitos através de uma análise mais específica dos códigos dos repositórios analisados, que determinará o escopo do projeto.
+
+---
+
+# **11. Instrumentação e protocolo operacional**
+
+## **11.1 Instrumentos de coleta**
+
+Serão utilizadas ferramentas de análise estática, incluindo dart_code_metrics para métricas como complexidade ciclomática, acoplamento e detecção de antipadrões, SonarQube (Community Edition) quando aplicável para identificação de code smells, e scripts personalizados em Python ou Dart para extrair métricas específicas, como número de rebuilds, módulos e dependências.-Também será usado o GitHub API para coleta de informações do repositório.
+
+---
+
+## **11.2 Materiais de suporte**
+
+Serão utilizados um documento padronizado de checklist de antipadrões baseado na literatura, planilhas para coleta de métricas como CBO, complexidade, LOC e estrutura de módulos, um roteiro curto para desenvolvedores no estudo cognitivo, scripts automatizados de coleta de dados e uma lista de commits e releases dos projetos para contextualização.
+
+---
+
+## **11.3 Procedimento experimental**
+
+### **Passo 1 – Seleção final dos repositórios**
+
+* Verificar tamanho comparável (LOC, nº arquivos, nº módulos).
+* Garantir dominância do gerenciador de estado (Bloc ou MobX).
+
+### **Passo 2 – Caracterização inicial**
+
+* Extração inicial de:
+
+  * número de módulos,
+  * número de camadas,
+  * LOC total,
+  * número de widgets dependentes de estado.
+
+### **Passo 3 – Execução das métricas estáticas**
+
+* Rodar ferramentas em todo o repositório.
+* Registrar:
+
+  * CBO,
+  * complexidade por módulo,
+  * LCOM (coesão),
+  * dependências entre módulos,
+  * tamanho das stores/blocs.
+
+### **Passo 4 – Identificação de antipadrões**
+
+A partir de:
+
+1. Regras automatizadas detectadas pelas ferramentas.
+2. Checklist manual baseado em literatura (prop drilling, global store excessivo, acoplamento implícito etc.).
+
+### **Passo 5 – Classificação da severidade**
+
+Cada ocorrência recebe:
+**Baixa**, **Média**, **Alta** (conforme impacto arquitetural).
+
+### **Passo 6 – Comparação entre Bloc e MobX**
+
+* Comparativo módulo a módulo.
+* Comparativo global (por projeto).
+* Análise descritiva e visualização (percentuais, gráficos).
+
+### **Passo 7 – Síntese dos resultados**
+
+* Consolidação dos achados frente às hipóteses H0/H1.
+* Recomendação de boas práticas.
+
+---
+
+## **11.4 Plano de piloto**
+
+Antes da coleta real, o pipeline será executado em um repositório pequeno (como um exemplo em Flutter com Bloc ou MobX) pra validar a execução das ferramentas, a confiabilidade das métricas, o tempo médio do processo e a clareza do checklist de antipadrões. Com base nessa validação, scripts e planilhas serão ajustados conforme necessário. Esse piloto assegura a consistência do processo antes da análise dos repositórios principais.
+
+---
+
+# **12. Plano de análise de dados**
+
+## **12.1 Estratégia geral de análise**
+
+A análise será comparativa, descritiva e exploratória, combinando métricas quantitativas obtidas pelas ferramentas, identificação manual de antipadrões não detectados automaticamente, cruzamentos entre variáveis como acoplamento e antipadrões, além de avaliações em nível de módulo e de projeto. Como envolve apenas dois repositórios, o objetivo não é a generalização estatística, mas sim um entendimento profundo e baseado em evidências.
+
+---
+
+## **12.2 Métodos estatísticos planejados**
+
+* **Estatísticas descritivas:** média, mediana, variância, histogramas.
+
+* **Comparações pareadas Bloc vs. MobX:**
+
+  * diferença absoluta de métricas,
+  * diferença relativa (%),
+  * análise qualitativa de severidade.
+
+* **Testes estatísticos:**
+  Como o N é muito pequeno, só testes exploratórios simples podem ser levados na conta:
+
+  * Será aplicado um teste não paramétrico para comparar as distribuições entre módulos, como o Mann-Whitney, caso haja quantidade suficiente de módulos. Também será calculada a correlação de Spearman para verificar a relação entre o acoplamento e a quantidade de antipadrões.
+
+---
+
+## **12.3 Tratamento de dados faltantes e outliers**
+
+Se alguma ferramenta falhar em um módulo, ele será reprocessado manualmente. Caso surjam métricas inconsistentes, como uma complexidade muito fora da curva, o outlier será investigado para verificar se representa um caso real, sendo mantido, ou um erro da ferramenta, sendo corrigido ou removido. Já em situações de dados ausentes nas tarefas cognitivas, o participante será excluído apenas da métrica afetada.
+
+---
+
+## **12.4 Plano de análise para dados qualitativos**
+
+Para antipadrões identificados manualmente ou análises narrativas, primeiro será feita uma codificação inicial por tipo — como prop drilling, acoplamento implícito ou rebuilds inesperados — seguida da classificação por severidade. Em seguida, cada antipadrão será mapeado por gerenciador de estado, indicando onde ocorre com mais frequência, por que surge e qual é seu impacto no fluxo e na modularização. Depois, os achados qualitativos serão triangulados com os quantitativos, como quando um acoplamento elevado é explicado pelo uso de global stores. Por fim, será produzida uma síntese final com recomendações práticas.
+
+---
+
 ## Referências
 * PLAVSIC, Manuel. State management patterns and their potential drawbacks. 2023. 
 * YOUSSEF, Mosab. The Power of Structural Design Patterns in Flutter: Your Ultimate Guide to Building Efficient Apps. 2024. 
