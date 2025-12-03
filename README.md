@@ -546,6 +546,8 @@ Serão utilizados um documento padronizado de checklist de antipadrões baseado 
 
 ## **11.3 Procedimento experimental**
 
+<img width="1024" height="768" alt="metodologiapng" src="https://github.com/user-attachments/assets/c8418322-f3ad-4b54-8e6f-8d3fed511899" />
+
 ### **Passo 1 – Seleção final dos repositórios**
 
 * Verificar tamanho comparável (LOC, nº arquivos, nº módulos).
@@ -635,7 +637,7 @@ Se alguma ferramenta falhar em um módulo, ele será reprocessado manualmente. C
 
 ## **12.4 Plano de análise para dados qualitativos**
 
-Para antipadrões identificados manualmente ou análises narrativas, primeiro será feita uma codificação inicial por tipo — como prop drilling, acoplamento implícito ou rebuilds inesperados — seguida da classificação por severidade. Em seguida, cada antipadrão será mapeado por gerenciador de estado, indicando onde ocorre com mais frequência, por que surge e qual é seu impacto no fluxo e na modularização. Depois, os achados qualitativos serão triangulados com os quantitativos, como quando um acoplamento elevado é explicado pelo uso de global stores. Por fim, será produzida uma síntese final com recomendações práticas.
+Para antipadrões identificados manualmente ou análises narrativas, primeiro será feita uma codificação inicial por tipo, como prop drilling, acoplamento implícito ou rebuilds inesperados, seguida da classificação por severidade. Em seguida, cada antipadrão será mapeado por gerenciador de estado, indicando onde ocorre com mais frequência, por que surge e qual é seu impacto no fluxo e na modularização. Depois, os achados qualitativos serão triangulados com os quantitativos, como quando um acoplamento elevado é explicado pelo uso de global stores. Por fim, será produzida uma síntese final com recomendações práticas.
 
 ---
 
