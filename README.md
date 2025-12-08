@@ -79,13 +79,10 @@ Avaliar como diferentes gerenciadores de estado em Flutter influenciam a ocorrê
 ### 3.2 Objetivos Específicos
 
 1. Identificar e catalogar os antipadrões relacionados ao gerenciamento de estado presentes em projetos Flutter que utilizam Bloc e MobX.
-2. Descrever e comparar a estrutura do fluxo de estado dos dois gerenciadores (arquivos, camadas, padrões de atualização, reatividade explícita vs. implícita).
-3. Quantificar a ocorrência de antipadrões em cada repositório, normalizando por módulo e tamanho de código.
-4. Comparar Bloc e MobX quanto à incidência, diversidade e severidade dos antipadrões identificados.
-5. Avaliar como acoplamento, complexidade, modularização e tamanho dos módulos se relacionam com os antipadrões encontrados em cada gerenciador.
-6. Medir aspectos de navegação e esforço cognitivo (quando houver participantes humanos), como tempo para localizar estados ou número de passos entre arquivos.
-7. Examinar a relação entre antipadrões e comportamentos de performance (como rebuilds desnecessários e reações implícitas).
-8. Propor recomendações práticas para mitigação de antipadrões, baseadas nas evidências observadas nos projetos Bloc e MobX analisados.
+2. Comparar Bloc e MobX quanto à incidência, diversidade e severidade dos antipadrões identificados.
+3. Avaliar como acoplamento, complexidade, modularização e tamanho dos módulos se relacionam com os antipadrões encontrados em cada gerenciador.
+4. Examinar a relação entre antipadrões e comportamentos de performance.
+5. Propor recomendações práticas para mitigação de antipadrões, baseadas nas evidências observadas nos projetos Bloc e MobX analisados.
 
 ### 3.3 Questões de Pesquisa
 
