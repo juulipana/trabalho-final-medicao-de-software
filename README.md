@@ -14,18 +14,19 @@
 
 * **v1.1** — Documento inicial criado + GQM.
 * **v1.2** — Escopo, Objetivo, Stakeholders/Impacto, Riscos de alto nível, premissas e critérios de sucesso.
-* **v1.3** - Modelo conceitual e hipóteses; Variáveis, fatores, tratamentos e objetos de estudo; Desenho experimental.
+* **v1.3** — Modelo conceitual e hipóteses; Variáveis, fatores, tratamentos e objetos de estudo; Desenho experimental.
+* **v1.4** — Ajustes metodológicos para garantir que todas as métricas quantitativas sejam obtidas via script automatizado.
 
 ### 1.4 Datas
 
 * **Criação:** 21/11/2025
-* **Última atualização:** 28/11/2025
+* **Última atualização:** 08/12/2025
 
 ### 1.5 Autores
 
 * **Nome:** *Juliana Parreiras Guimarães da Cunha*
 * **Área:** Engenharia de Software / Flutter
-* **Contato:** *julicunha04@gmail.com - (31) 9 7171-2627*
+* **Contato:** *[julicunha04@gmail.com](mailto:julicunha04@gmail.com) - (31) 9 7171-2627*
 
 ### 1.6 Responsável Principal (PI)
 
@@ -54,16 +55,14 @@ Com isso, concluímos que o **problema** está na falta de clareza sobre como di
 
 ### 2.2 Contexto Organizacional e Técnico
 
-O estudo será realizado no contexto de aplicações Flutter, utilizando projetos open-source e análises automatizadas de código. O foco está em boas práticas de arquitetura, qualidade de código, métricas estáticas e análise de antipadrões.
+A análise técnica utilizará um script de análise estática, responsável por extrair automaticamente todas as métricas quantitativas (acoplamento, complexidade, LOC, dependências, número de rebuilds detectáveis, entre outras). A análise manual será restrita apenas à validação de antipadrões que não puderem ser classificados pelo script.
 
-### **2.3 Trabalhos e Evidências Prévias**
+### 2.3 Trabalhos e Evidências Prévias
 
 * *"State management patterns and their potential drawbacks"*, Manuel Plavsic (2023).
 * *"The Power of Structural Design Patterns in Flutter: Your Ultimate Guide to Building Efficient Apps"*, Mosab Youssef (2024)
 
----
-
-### **2.4 Referencial Teórico e Empírico Essencial**
+### 2.4 Referencial Teórico e Empírico Essencial
 
 * Estudos de antipadrões, incluindo exemplos relevantes ao desenvolvimento mobile, como *prop drilling*, uso inadequado de Providers, global state excessivo e estruturas difíceis de manter.
 * Princípios de gerenciamento de estado em Flutter, considerando desde abordagens simples com `setState` até ferramentas mais estruturadas, como Provider, Riverpod, Bloc, Cubit e MobX.
@@ -79,12 +78,14 @@ Avaliar como diferentes gerenciadores de estado em Flutter influenciam a ocorrê
 
 ### 3.2 Objetivos Específicos
 
-1. Identificar os antipadrões mais comuns relacionados ao gerenciamento de estado em aplicações Flutter.
-2. Mapear como os gerenciadores Bloc e MobX estruturam o fluxo de estado e a atualização da interface.
-3. Analisar a presença de antipadrões em projetos reais que utilizam Bloc e MobX.
-4. Comparar os dois gerenciadores quanto à frequência, tipo e impacto dos antipadrões encontrados.
-5. Avaliar como as escolhas de arquitetura e modularização influenciam o surgimento desses antipadrões em cada tipo.
-6. Propor boas práticas para reduzir o surgimento de antipadrões em projetos Flutter que utilizam Bloc ou MobX.
+1. Identificar e catalogar os antipadrões relacionados ao gerenciamento de estado presentes em projetos Flutter que utilizam Bloc e MobX.
+2. Descrever e comparar a estrutura do fluxo de estado dos dois gerenciadores (arquivos, camadas, padrões de atualização, reatividade explícita vs. implícita).
+3. Quantificar a ocorrência de antipadrões em cada repositório, normalizando por módulo e tamanho de código.
+4. Comparar Bloc e MobX quanto à incidência, diversidade e severidade dos antipadrões identificados.
+5. Avaliar como acoplamento, complexidade, modularização e tamanho dos módulos se relacionam com os antipadrões encontrados em cada gerenciador.
+6. Medir aspectos de navegação e esforço cognitivo (quando houver participantes humanos), como tempo para localizar estados ou número de passos entre arquivos.
+7. Examinar a relação entre antipadrões e comportamentos de performance (como rebuilds desnecessários e reações implícitas).
+8. Propor recomendações práticas para mitigação de antipadrões, baseadas nas evidências observadas nos projetos Bloc e MobX analisados.
 
 ### 3.3 Questões de Pesquisa
 
@@ -116,18 +117,16 @@ Avaliar como diferentes gerenciadores de estado em Flutter influenciam a ocorrê
 
 ## 4. Escopo e contexto do experimento
 
-### 4.1 Escopo funcional / de processo (incluído e excluído)
-Este projeto abrange a análise comparativa de dois aplicativos Flutter com tamanho de código equivalente, sendo um baseado em Bloc e outro em MobX. Serão selecionados repositórios open-source amplamente reconhecidos (medidos pelo número de estrelas no GitHub) que utilizem esses gerenciadores de estado de forma predominante.
+### 4.1 Escopo funcional / de processo
 
-O estudo não incluirá repositórios que utilizem outros gerenciadores de estado ou qualquer framework que não seja Flutter. Além disso, o contexto funcional das aplicações não será considerado: o foco está exclusivamente sobre características internas do código e seu tamanho, visando permitir uma comparação entre os projetos analisados.
+O experimento abrange a análise automatizada de repositórios Flutter que utilizam Bloc ou MobX. Um script executará toda a mineração, classificação e extração de métricas (acoplamento, complexidade, tamanho, estrutura e antipadrões identificáveis via análise estática). A validação manual será aplicada apenas quando a detecção automática não for conclusiva. Não fazem parte do escopo análises manuais extensas ou avaliações subjetivas de arquitetura ou lógica de negócio.
 
 ### 4.2 Contexto do estudo (tipo de organização, projeto, experiência)
-O estudo será realizado usando de grandes projetos open-source desenvolvidos em Flutter, escolhidos por sua relevância e número de estrelas. A análise focará em dois repositórios comparáveis em tamanho de código, sendo um baseado em Bloc e outro em MobX.
-
-Não há organização ou equipe específica envolvida; os projetos analisados refletem contribuições de desenvolvedores da comunidade, com níveis variados de experiência. A criticidade do domínio das aplicações não será considerada, já que o foco está na estrutura interna do código e nas práticas de gerenciamento de estado.
+O estudo é conduzido em um contexto acadêmico, no âmbito de um projeto de pesquisa em Engenharia de Software, sem vínculo com organizações comerciais. Os repositórios avaliados são projetos públicos do GitHub, desenvolvidos por programadores de diferentes níveis de experiência e sem padronização prévia. O objetivo é observar práticas reais de desenvolvimento Flutter com Bloc e MobX, utilizando análise automatizada para garantir consistência e independência da experiência individual dos autores dos projetos.
 
 ### 4.3 Premissas
-O estudo assume que os repositórios open-source selecionados permanecerão disponíveis durante a análise e que possuem tamanhos e complexidade comparáveis. Também se presume que as ferramentas de análise funcionarão de forma consistente ao longo de toda a pesquisa.
+* Presume-se que os repositórios possuam estrutura de pastas compatível com análise automatizada.
+* Assume-se que o script conseguirá extrair todas as métricas necessárias conforme planejado.
 
 ### 4.4 Restrições
 
@@ -138,7 +137,7 @@ O estudo assume que os repositórios open-source selecionados permanecerão disp
 
 ### 4.5 Limitações previstas
 
-* Amostra pequena (apenas dois projetos).
+* A análise manual será mínima e limitada à validação de antipadrões cuja classificação automática não for conclusiva.
 * Diferenças de contexto entre os repositórios podem influenciar os resultados.
 * Resultados podem não se aplicar a outros contextos, arquiteturas ou ferramentas.
 
@@ -182,36 +181,34 @@ O estudo assume que os repositórios open-source selecionados permanecerão disp
 * Insights que podem influenciar escolhas arquiteturais em novos produtos.
 * Ajuda a ajustar prazos de projetos em andamento com base em dados.
 * Melhora na documentação e na tomada de decisão técnica a partir dos resultados obtidos em projetos reais.
-  
+
 ## 6. Riscos de alto nível, premissas e critérios de sucesso
 
-### 6.1 Riscos de alto nível (negócio, técnicos, etc.)
+### 6.1 Riscos de alto nível
+
+**Correção em um risco:**
 
 * Indisponibilidade dos repositórios open-source selecionados.
 * Atrasos na análise devido à complexidade maior do que o previsto.
 * Diferenças estruturais entre os projetos que prejudiquem comparações justas.
-* Risco de resultados pouco generalizáveis por conta da amostra reduzida.
-  
+ 
 ### 6.2 Critérios de sucesso globais (go / no-go)
 
 **Go (seguir com o experimento / aplicar recomendações):**
-* Seleção de pelo menos um repositório representativo para cada gerenciador (Bloc e MobX) com tamanho e complexidade comparáveis.
-* Identificação e quantificação de antipadrões suficientes para permitir comparação (ocorrências relevantes em ambos os projetos).
+* Métricas extraídas **formalmente pelo script** com consistência reprodutível.
+* Identificação e quantificação de antipadrões suficientes para permitir comparação.
 * Métricas principais (acoplamento, complexidade, modularização) calculadas de forma consistente e reproduzível.
-* Relatório com evidências claras que suportem recomendações práticas e mudanças arquiteturais.
-
 **No-Go (parar / não prosseguir com mudanças):**
 * Incapacidade de encontrar repositórios comparáveis ou remoção/indisponibilidade dos mesmos.
 * Falha persistente das ferramentas de análise ou impossibilidade técnica de extrair métricas confiáveis.
 * Número de ocorrências de antipadrões insuficiente para análise estatística significativa.
 
 ### 6.3 Critérios de parada antecipada (pré-execução)
-* Impossibilidade de encontrar dois projetos open-source comparáveis em tamanho e complexidade.
-* Mudanças significativas nos repositórios.
-  
+* Impossibilidade do script extrair métricas fundamentais (CBO, complexidade, LOC, detecção inicial de antipadrões).
+
 ---
 
-# **7. Modelo conceitual e hipóteses**
+# 7. Modelo Conceitual e Hipóteses
 
 ## **7.1 Modelo conceitual do experimento**
 
@@ -295,47 +292,16 @@ As hipóteses abaixo foram formuladas para as **questões principais**, isto é,
     * replicabilidade dos cálculos.
 ---
 
-# **8. Variáveis, fatores, tratamentos e objetos de estudo**
+# 8. Variáveis, fatores, tratamentos e objetos de estudo
 
-## **8.1 Objetos de estudo**
+## 8.1 Objetos de estudo
+Os objetos de estudo desta pesquisa são (1) o gerenciador de estado adotado pelos repositórios analisados e (2) os artefatos produzidos durante esse processo, ou seja, o código-fonte.
 
-Os objetos analisados serão:
+## 8.2 Sujeitos / participantes
 
-* **Dois repositórios Flutter open-source**, de tamanho comparável:
+Esta pesquisa não envolve participantes humanos. Os “sujeitos” analisados são exclusivamente repositórios públicos de código-fonte Flutter que utilizam os gerenciadores de estado MobX ou Bloc. Todas as análises serão feitas apenas sobre esses repositórios, sem interação com desenvolvedores ou coleta de dados pessoais.
 
-  * Um utilizando **Bloc** como gerenciador de estado predominante.
-  * Outro utilizando **MobX**.
-
-Dentro deles, serão analisados:
-
-* módulos de código (features, submódulos),
-* arquivos Dart,
-* stores, blocs, estados, eventos, observables,
-* widgets dependentes do estado,
-* métricas estáticas (CBO, complexidade, LCOM),
-* antipadrões previamente catalogados.
-
----
-
-## **8.2 Sujeitos / participantes**
-
-Participantes opcionais para a parte de **esforço cognitivo**:
-
-* **Desenvolvedores ou estudantes com experiência mínima em Flutter**,
-  com nível básico/intermediário.
-
-Eles serão observados apenas em tarefas simples, como:
-
-* localizar onde o estado é modificado,
-* navegar entre arquivos,
-* identificar fluxo de eventos.
-
-A presença desses sujeitos não é obrigatória para o estudo quantitativo dos repositórios, mas reforça a validade externa.
-
----
-
-## **8.3 Variáveis independentes (fatores) e níveis**
-
+## 8.3 Variáveis independentes
 | Fator                     | Descrição                    | Níveis                            |
 | ------------------------- | ---------------------------- | --------------------------------- |
 | **Gerenciador de estado** | Tecnologia analisada         | *Bloc*, *MobX*                    |
@@ -364,24 +330,17 @@ O experimento terá **duas condições principais**:
 Não haverá grupo controle, pois é um projeto experimental comparativo.
 
 ---
-
-## **8.5 Variáveis dependentes (respostas)**
-
-Principais variáveis medidas:
-
+## 8.5 Variáveis dependentes
 * **Número total de antipadrões por módulo**
 * **Classificação de severidade dos antipadrões**
 * **CBO (acoplamento entre objetos)**
 * **Complexidade ciclomática média por módulo**
 * **Número de rebuilds desnecessários detectados**
 * **Tamanho dos módulos (LOC, nº de arquivos)**
-* **Tempo para localizar estados/ações (participantes)**
 * **Número de passos de navegação entre arquivos**
 
----
 
 ## **8.6 Variáveis de controle / bloqueio**
-
 * **Tamanho do projeto** (LOC e número de arquivos)
 * **Tipo de aplicação** (evitar comparar apps totalmente diferentes em propósito)
 * **Versão mínima do Flutter analisada**
@@ -389,89 +348,32 @@ Principais variáveis medidas:
 * **Tipo de arquitetura base** (ex.: evitar comparar projetos com Clean Architecture complexa vs. projetos simples)
 * **Ambiente de execução** (mesma versão do SDK)
 
----
-
-## **8.7 Possíveis variáveis de confusão conhecidas**
+## 8.7 Variáveis de confusão
 
 * Diferença na experiência dos contribuidores originais dos repositórios.
 * Diferenças arquiteturais não relacionadas ao gerenciador de estado.
-* A existência de refatorações ou migrações parciais no histórico.
 * O projeto MobX ou Bloc pode ter mais funcionalidades, aumentando LOC.
-* Ferramentas de lint podem gerar falsos positivos.
-* Estrutura de pastas inconsistentes entre projetos.
-
-Mitigação: normalização por módulo, análise manual, filtragem de casos.
+* O script ajuda a evitar erros na coleta e classificação dos dados, mas ainda podem existir diferenças entre os projetos que fogem do nosso controle e podem influenciar os resultados.
 
 ---
 
-# **9. Desenho experimental**
+# 9. Desenho Experimental
 
 ## **9.1 Tipo de desenho**
 
-O estudo usa um **desenho experimental comparativo**, com:
-
-* **Dois tratamentos fixos** (Bloc vs. MobX)
-* **Análise observacional** dos objetos (não manipulados)
-* **Estrutura em blocos** por módulo (quando adequado)
-
-É o mais apropriado dado que:
-
-* não é possível “randomizar” projetos open-source,
-* o foco é observar diferenças estruturais reais,
-* a amostra é limitada (2 repositórios completos).
-
----
+Este estudo adota um desenho observacional e comparativo, baseado em análises automatizadas de código-fonte. Não há intervenções nos repositórios, o objetivo é observar e comparar como projetos Flutter que utilizam MobX ou Bloc apresentam diferenças estruturais e ocorrência de antipadrões. Trata-se, portanto, de um desenho não experimental, onde os grupos (MobX e Bloc) são analisados tal como se encontram.
 
 ## **9.2 Randomização e alocação**
 
-A randomização ocorrerá apenas se houver participantes humanos:
+Neste estudo não há randomização, pois não existem sujeitos nem tarefas a serem sorteados. A alocação dos repositórios é feita automaticamente pelo script, que identifica o gerenciador de estado usado (MobX ou Bloc) e classifica cada projeto no grupo correspondente.
 
-* Ordem dos projetos será randomizada por participante:
+## 9.3 Balanceamento
 
-  * metade começa com o projeto Bloc,
-  * metade com o projeo MobX.
-* Randomização por ferramentas padrão (ex.: random.org ou função rand do Python).
+O balanceamento é garantido selecionando repositórios com características mínimas semelhantes, evitando grupos muito diferentes entre si.
 
-Para análise dos repositórios, **não há randomização**, pois são objetos fixos.
+## 9.4 Número de grupos e sessões
 
----
-
-## **9.3 Balanceamento e contrabalanço**
-
-Para participantes humanos:
-
-* Aplicação de **contrabalanço do tipo AB/BA**, evitando vieses de ordem.
-* Cada participante executa as mesmas tarefas nos dois projetos.
-* Mesmo número de participantes em cada ordem.
-
-Para o código:
-
-* Módulos comparáveis serão pareados por tamanho e responsabilidade.
-
----
-
-## **9.4 Número de grupos e sessões**
-
-* **2 grupos experimentais**, correspondentes aos dois tratamentos principais:
-
-  * Grupo Bloc
-  * Grupo MobX
-
-* **Sessões**:
-
-  * Análise do repositório Bloc → 1 sessão
-  * Análise do repositório MobX → 1 sessão
-
-Participantes humanos (se houver):
-
-* 1 sessão com ambos os tratamentos (cerca de 20–30 min cada).
-
-Justificativa:
-
-* Apenas dois gerenciadores de estado estão sendo comparados.
-* Sessões curtas evitam fadiga e mantêm a validade do esforço cognitivo.
-  
----
+Serão dois grupos: repositórios que usam MobX e repositórios que usam Bloc. Cada repositório passa por uma única rodada de análise, executada automaticamente pelo script. Isso é suficiente porque o estudo é observacional: o código não muda entre rodadas, então repetir a análise não traria novos dados.
 
 # **10. População, sujeitos e amostragem**
 
@@ -495,19 +397,19 @@ A população-alvo inclui:
 
 ## **10.2 Critérios de inclusão de sujeitos (projetos / participantes)**
 
-Repositórios Flutter open-source disponíveis no GitHub ou plataformas similares, que utilizem predominantemente Bloc (para T1) ou MobX (para T2), possuam mais de 500 estrelas, apresentem uma estrutura modular clara e não misturem de forma significativa múltiplos gerenciadores de estado.
+Repositórios Flutter open-source disponíveis no GitHub ou plataformas similares, que utilizem predominantemente Bloc ou MobX, possuam alto número de estrelas e não misturem de forma significativa múltiplos gerenciadores de estado.
 
 ---
 
 ## **10.3 Critérios de exclusão**
 
-Projetos que misturam diversos gerenciadores de estado simultaneamente, repositórios muito pequenos (com menos de cinco módulos ou menos de 3.000 linhas de código) e repositórios com menos de 500 estrelas.
+Projetos que misturam diversos gerenciadores de estado simultaneamente, repositórios muito pequenos (com menos de cinco módulos ou menos de 3.000 linhas de código) e repositórios com poucas estrelas.
 
 ---
 
 ## **10.4 Tamanho da amostra planejado**
 
-A amostra consiste em dois projetos principais, sendo um utilizando Bloc e outro utilizando MobX, com a análise de 10 a 20 módulos no total (entre 5 e 10 por projeto). Trata-se de uma amostra analítica, não estatística, pois o objetivo é comparar em profundidade as características estruturais de dois sistemas equivalentes.
+O estudo pretende analisar aproximadamente 20 a 30 repositórios em cada grupo (MobX e Bloc), totalizando de 40 a 60 projetos. Esse tamanho é suficiente para garantir variabilidade estrutural, detectar padrões recorrentes e manter o processamento viável dentro dos recursos disponíveis. Além disso, o volume proposto oferece poder analítico adequado para comparar a presença de antipadrões entre os dois grupos.
 
 ---
 
@@ -519,9 +421,7 @@ Seleção sistemática através de busca no GitHub utilizando filtros como:
 * linguagem: Dart,
 * framework: Flutter,
 * tecnologias: Bloc / MobX,
-* ordenação por número de estrelas, mínimo 500,
-* inspeção manual para confirmar dominância do gerenciador.
-
+* ordenação por número de estrelas.
 ---
 
 ## **10.6 Treinamento e preparação dos sujeitos**
@@ -643,6 +543,4 @@ Para antipadrões identificados manualmente ou análises narrativas, primeiro se
 
 ## Referências
 * PLAVSIC, Manuel. State management patterns and their potential drawbacks. 2023. 
-* YOUSSEF, Mosab. The Power of Structural Design Patterns in Flutter: Your Ultimate Guide to Building Efficient Apps. 2024. 
-
-*O desenvolvimento desta pesquisa ainda está em andamento.*
+* YOUSSEF, Mosab. The Power of Structural Design Patterns in Flutter: Your Ultimate Guide to Building Efficient Apps. 2024.
