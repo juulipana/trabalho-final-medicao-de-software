@@ -433,7 +433,7 @@ Serão utilizados um documento padronizado de checklist de antipadrões baseado 
 
 ## **11.3 Procedimento experimental**
 
-<img width="1024" height="768" alt="Process of Creative Thinking Flowchart Graph" src="https://github.com/user-attachments/assets/817ba352-3f25-4010-a499-eceac5366b9d" />
+<img width="528" height="521" alt="image" src="https://github.com/user-attachments/assets/842f14b3-5f50-40c8-8cbc-2c6aa31d158a" />
 
 1. **Seleção de repositórios**
 
