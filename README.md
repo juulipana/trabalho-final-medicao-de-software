@@ -275,7 +275,9 @@ As hipóteses abaixo foram formuladas para as **questões principais**, isto é,
 ---
 
 ## **7.3 Nível de significância e considerações de poder**
+
 O estudo adotará um nível de significância de α = 0,05, mas o poder estatístico dependerá da quantidade de repositórios Flutter identificados pelo script. Como a amostra será composta por vários projetos open-source com tamanhos e estruturas diferentes, o poder formal pode variar e não será totalmente garantido. Assim, a análise será principalmente descritiva, usando testes estatísticos apenas quando a quantidade de dados permitir resultados confiáveis.
+
 ---
 # 8. Variáveis, fatores, tratamentos e objetos de estudo
 
