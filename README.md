@@ -435,53 +435,41 @@ Serão utilizados um documento padronizado de checklist de antipadrões baseado 
 
 <img width="1024" height="768" alt="Process of Creative Thinking Flowchart Graph" src="https://github.com/user-attachments/assets/817ba352-3f25-4010-a499-eceac5366b9d" />
 
-### **Passo 1 – Seleção final dos repositórios**
+1. **Seleção de repositórios**
 
-* Verificar tamanho comparável (LOC, nº arquivos, nº módulos).
-* Garantir dominância do gerenciador de estado (Bloc ou MobX).
+   * Busca automatizada de projetos Flutter open-source no GitHub.
+   * Filtragem por linguagem, framework, tipo de projeto, gerenciador de estado predominante e número mínimo de estrelas.
 
-### **Passo 2 – Caracterização inicial**
+2. **Extração de dados**
 
-* Extração inicial de:
+   * Uso de scripts para coleta de métricas estáticas do código: acoplamento, complexidade, modularização, tamanho de módulos.
+   * Identificação automatizada de antipadrões nos módulos.
+   * Registro de metadados de cada repositório (histórico de commits, número de arquivos, estrutura de módulos).
 
-  * número de módulos,
-  * número de camadas,
-  * LOC total,
-  * número de widgets dependentes de estado.
+3. **Processamento e organização dos dados**
 
-### **Passo 3 – Execução das métricas estáticas**
+   * Normalização dos dados por módulo e projeto.
+   * Catalogação dos antipadrões por tipo, severidade e localização no código.
+   * Consolidação de métricas para permitir comparação entre Bloc e MobX.
 
-* Rodar ferramentas em todo o repositório.
-* Registrar:
+4. **Análise**
 
-  * CBO,
-  * complexidade por módulo,
-  * LCOM (coesão),
-  * dependências entre módulos,
-  * tamanho das stores/blocs.
+   * Comparação descritiva entre projetos com Bloc e MobX.
+   * Cálculo de métricas de tendência central e dispersão (médias, percentuais).
+   * Identificação de relações entre modularização, complexidade, acoplamento e ocorrência de antipadrões.
+   * Triangulação entre métricas automáticas e análise manual complementar quando necessário.
 
-### **Passo 4 – Identificação de antipadrões**
+5. **Validação e replicabilidade**
 
-A partir de:
+   * Conferência da consistência dos scripts.
+   * Repetição das extrações para garantir reprodutibilidade.
+   * Documentação clara dos procedimentos de coleta e análise.
 
-1. Regras automatizadas detectadas pelas ferramentas.
-2. Checklist manual baseado em literatura (prop drilling, global store excessivo, acoplamento implícito etc.).
+6. **Síntese dos resultados**
 
-### **Passo 5 – Classificação da severidade**
-
-Cada ocorrência recebe:
-**Baixa**, **Média**, **Alta** (conforme impacto arquitetural).
-
-### **Passo 6 – Comparação entre Bloc e MobX**
-
-* Comparativo módulo a módulo.
-* Comparativo global (por projeto).
-* Análise descritiva e visualização (percentuais, gráficos).
-
-### **Passo 7 – Síntese dos resultados**
-
-* Consolidação dos achados frente às hipóteses H0/H1.
-* Recomendação de boas práticas.
+   * Consolidação das métricas e antipadrões em tabelas e gráficos.
+   * Comparações entre gerenciadores de estado e entre módulos.
+   * Preparação dos dados para interpretação final e recomendações.
 
 ---
 
