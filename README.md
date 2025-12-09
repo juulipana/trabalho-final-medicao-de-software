@@ -516,6 +516,217 @@ Para antipadrões identificados manualmente ou análises narrativas, primeiro se
 
 ---
 
+# **13. Avaliação de validade (ameaças e mitigação)**
+## **13.1 Validade de conclusão**
+
+As principais ameaças às conclusões do estudo são:
+
+**Poucos repositórios disponíveis**
+
+* Prevenção: selecionar todos os repositórios que atendam aos critérios e balancear Bloc e MobX, priorizando repositórios maiores e com mais etrelas, para garantir maior conteúdo para análise.
+  
+**Diferenças de arquitetura/proposta dos projetos**
+
+* Prevenção: normalizar métricas por tamanho de módulo; registrar arquitetura de cada projeto; interpretar antipadrões considerando o contexto.
+
+**Mistura de gerenciadores em um mesmo projeto**
+
+* Prevenção: excluir projetos que misturem significativamente (ex: 3+ tipos de gerenciadores); documentar claramente módulos com múltiplos gerenciadores e analisar apenas módulos predominantes.
+
+**Erros das ferramentas automáticas (scripts, análise estática, GitHub API)**
+
+* Prevenção: executar piloto para testar scripts; reprocessamento manual quando necessário; normalização de métricas; testes estatísticos não paramétricos.
+
+## **13.2 Validade interna**
+
+**Validade interna: ameaças e mitigação**
+
+* **History (eventos externos que podem influenciar os resultados)**
+
+  * *Ameaça:* mudanças recentes em Flutter, versões do SDK ou bibliotecas podem alterar comportamento de Bloc ou MobX nos projetos analisados.
+  * *Prevenção:* limitar análise a projetos compatíveis com a mesma versão mínima do Flutter; registrar versões usadas nos repositórios.
+
+* **Maturation (mudança natural nos projetos ao longo do tempo)**
+
+  * *Ameaça:* repositórios mais antigos podem ter antipadrões corrigidos ou introduzidos com o tempo, afetando a comparação.
+  * *Prevenção:* coletar metadados de commits e releases para contextualizar quando os antipadrões surgiram; comparar projetos com idade/tempo de desenvolvimento semelhantes.
+
+* **Selection (diferenças iniciais entre os grupos)**
+
+  * *Ameaça:* Bloc e MobX podem ter projetos com complexidade, tamanho ou propósito diferentes, influenciando a ocorrência de antipadrões.
+  * *Prevenção:* aplicar critérios de inclusão/exclusão claros; balancear número de repositórios, tamanho e tipo de aplicativo entre os grupos.
+
+* **Instrumentation (diferenças na forma de medir ou coletar dados)**
+
+  * *Ameaça:* scripts de análise podem detectar antipadrões de maneira ligeiramente diferente em projetos Bloc e MobX.
+  * *Prevenção:* usar os mesmos scripts e ferramentas para todos os repositórios; executar pré-teste piloto; reprocessar manualmente casos inconsistentes.
+
+* **Testing effects / experimenter bias (viés do pesquisador na análise manual)**
+
+  * *Ameaça:* interpretação subjetiva na validação manual de antipadrões pode influenciar os resultados.
+  * *Prevenção:* seguir checklist padronizado de antipadrões; documentar critérios de avaliação; sempre justificar decisões manuais.
+
+---
+
+## **13.3 Validade de constructo**
+
+As métricas escolhidas (acoplamento, complexidade, LOC, rebuilds, modularização) representam os conceitos de interesse como manutenibilidade, clareza arquitetural e ocorrência de antipadrões. Para reduzir ambiguidades, cada métrica será padronizada, normalizada por módulo e agrupada em categorias claramente definidas no checklist de antipadrões.
+
+## **13.4 Validade externa**
+
+Os resultados podem ser generalizados para projetos Flutter open-source de porte médio a grande, com uso predominante de Bloc ou MobX. Limitações de generalização incluem aplicações muito pequenas, uso de múltiplos gerenciadores de estado simultaneamente ou arquiteturas atípicas que fogem das condições do estudo.
+
+## **13.5 Resumo das principais ameaças e estratégias de mitigação**
+
+* **Poucos repositórios disponíveis** → Selecionar todos os projetos que atendam aos critérios; balancear Bloc e MobX; detalhar contexto de cada projeto.
+* **Diferenças de arquitetura ou proposta dos projetos** → Normalizar métricas por tamanho do módulo; registrar arquitetura; interpretar antipadrões considerando o contexto.
+* **Mistura de gerenciadores de estado no mesmo projeto** → Excluir projetos com múltiplos gerenciadores significativos; analisar apenas módulos predominantes e documentar claramente.
+* **Erros das ferramentas automáticas (scripts, SonarQube, GitHub API)** → Executar piloto; reprocessar manualmente métricas inconsistentes; normalizar dados; usar testes não paramétricos.
+* **Eventos externos / History** → Limitar análise a projetos compatíveis com a mesma versão do Flutter; registrar versões usadas.
+* **Mudanças naturais nos projetos / Maturation** → Analisar histórico de commits; comparar projetos com tempo de desenvolvimento semelhante.
+  
+# **14. Ética, privacidade e conformidade**
+    
+## **14.1 Questões éticas**
+
+O estudo não envolve sujeitos humanos. Os principais pontos éticos estão relacionados ao uso de código open-source: garantir respeito às licenças, não expor contribuintes e não gerar comparações que possam denegrir reputações.
+
+## **14.2 Consentimento informado**
+
+Não aplicável, pois não há participantes humanos. O estudo considera apenas repositórios públicos e informações acessíveis livremente.
+
+## **14.3 Privacidade e proteção de dados**
+
+Nenhum dado pessoal será coletado. Informações como nomes de contribuidores ou e-mails serão utilizadas apenas de forma agregada, sem identificação direta, garantindo anonimização e confidencialidade.
+
+## **14.4 Aprovações necessárias**
+
+Não há necessidade de aprovação formal de comitê de ética, pois não há participantes humanos. Revisão interna do orientador e supervisão acadêmica são suficientes.
+
+# 15. **Recursos, infraestrutura e orçamento**
+## **15.1 Recursos humanos e papéis**
+
+* Juliana Cunha — responsável pelo experimento, desenvolvimento dos scripts, execução da análise e interpretação dos dados.
+
+* Orientador acadêmico — revisão, supervisão metodológica e validação conceitual do estudo.
+
+## **15.2 Infraestrutura técnica necessária**
+
+* Computador com Dart e Flutter SDK.
+* Ferramentas de análise estática: dart_code_metrics, SonarQube.
+* Scripts personalizados em Python/Dart para coleta e normalização de métricas.
+* Acesso ao GitHub API.
+* Planilhas ou bancos de dados para registro de métricas.
+
+## **15.3 Materiais e insumos**
+
+* Documentos de checklist de antipadrões.
+* Planilhas de registro de métricas.
+* Scripts e ambientes de execução.
+* Repositórios open-source selecionados.
+  
+## **15.4 Orçamento e custos estimados**
+
+* Custos principais: horas de trabalho da pesquisadora e eventuais servidores para processamento.
+* Licenças de ferramentas gratuitas, sem custo adicional.
+* Fonte de financiamento: recursos acadêmicos e pessoais.
+
+# **16. Cronograma, marcos e riscos operacionais**
+    
+## **16.1 Macrocronograma**
+
+* Conclusão do plano detalhado: xx/xx/xxxx
+* Execução do piloto: xx/xx/xxxx
+* Ajustes pós-piloto: xx/xx/xxxx
+* Coleta de dados principal: xx/xx/xxxx
+* Consolidação de métricas e análise: xx/xx/xxxx
+* Síntese de resultados e recomendações: xx/xx/xxxx
+
+## **16.2 Dependências entre atividades**
+
+Piloto deve ser concluído antes da coleta principal.
+
+Ajustes pós-piloto dependem da análise de consistência do script.
+
+Consolidação de métricas depende da finalização da coleta principal.
+
+## **16.3 Riscos operacionais e plano de contingência**
+
+Risco: Falha de script ou ferramentas → Ação: reprocessamento manual e ajuste do código.
+
+Risco: Repositórios indisponíveis → Ação: manter lista de projetos alternativos.
+
+Risco: Atrasos na coleta → Ação: extensão do período de análise, priorizando repositórios maiores.
+
+# **17. Governança do experimento**
+## **17.1 Papéis e responsabilidades formais**
+
+Decisão final: Pesquisadora (Juliana Cunha) com revisão do orientador.
+Execução: Juliana Cunha.
+Revisão e validação: Orientador acadêmico.
+Informação: Equipe acadêmica e orientador.
+
+## **17.2 Ritos de acompanhamento pré-execução**
+
+Reunião de revisão do plano: xx/xx/xxxx
+Checkpoint pós-piloto: xx/xx/xxxx
+Revisão de consistência de scripts e métricas: xx/xx/xxxx
+
+## **17.3 Processo de controle de mudanças no plano**
+
+Qualquer alteração no desenho, escopo ou ferramentas será documentada, justificada, revisada pelo orientador e registrada com data e versão do documento.
+
+# **18. Plano de documentação e reprodutibilidade**
+## **18.1 Repositórios e convenções de nomeação**
+
+Scripts, planilhas e documentos armazenados em repositório privado no GitHub da pesquisadora.
+
+Nomes padronizados: EXP-FLT-ANTIPATTERNS-001_<tipo>_<data>.ext para rastreabilidade.
+
+## **18.2 Templates e artefatos padrão**
+
+* Checklist de antipadrões
+* Planilhas de registro de métricas
+* Scripts automatizados de extração
+* Documentos de análise e relatórios
+
+## **18.3 Plano de empacotamento para replicação futura**
+
+Todos os scripts, planilhas, listas de repositórios e instruções detalhadas serão organizados em um pacote digital, permitindo que outra equipe execute o experimento sem depender de conhecimento prévio sobre a análise.
+
+# **19. Plano de comunicação**
+## **19.1 Públicos e mensagens-chave pré-execução**
+
+* Orientador e equipe acadêmica: objetivos, escopo, datas e impacto esperado.
+* Stakeholders externos (comunidade Flutter): resultados resumidos e boas práticas a serem seguidas.
+
+## **19.2 Canais e frequência de comunicação**
+
+* E-mail para envio de relatórios e atualizações semanais.
+* Reuniões online com o orientador antes e após piloto e coleta principal.
+
+## **19.3 Pontos de comunicação obrigatórios**
+
+* Aprovação do plano final.
+* Resultados do piloto e ajustes necessários.
+* Mudanças relevantes no escopo ou cronograma.
+
+# **20. Critérios de prontidão para execução (Definition of Ready)**
+## **20.1 Checklist de prontidão**
+
+* Plano completo revisado e aprovado pelo orientador.
+* Scripts e ferramentas validados no piloto.
+* Lista de repositórios selecionada e acessível.
+* Comunicação prévia aos stakeholders acadêmicos definida.
+* Planilhas e templates de coleta prontos.
+
+## **20.2 Aprovações finais para iniciar a operação**
+
+* Juliana Cunha: autorização da execução do estudo.
+* Orientador acadêmico: validação final do plano e metodologia.
+
+Registro da aprovação será feito em documento assinado digitalmente e arquivado junto ao plano.
+
 ## Referências
 * PLAVSIC, Manuel. State management patterns and their potential drawbacks. 2023. 
 * YOUSSEF, Mosab. The Power of Structural Design Patterns in Flutter: Your Ultimate Guide to Building Efficient Apps. 2024.
