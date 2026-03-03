@@ -25,7 +25,7 @@
 ### 1.5 Autores
 
 * **Nome:** *Juliana Parreiras Guimarães da Cunha*
-* **Área:** Engenharia de Software / Flutter
+* **Área:** Engenharia de Software
 * **Contato:** *[julicunha04@gmail.com](mailto:julicunha04@gmail.com) - (31) 9 7171-2627*
 
 ### 1.6 Responsável Principal (PI)
